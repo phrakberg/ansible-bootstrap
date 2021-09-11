@@ -1,0 +1,14 @@
+# hosts file
+# [category]
+# friendly_name ansible_host=${ip/hostname/fqdn}
+
+[pis]
+devbox ansible_host=devbox.solenberg.io
+
+[VMs]
+proxmoxs ansible_host=black.solenberg.io
+gitlab_runner ansible_host=runner.solenberg.io
+
+[local]
+# tells ansible that the local system is running the show
+control ansible_connection=local
