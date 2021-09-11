@@ -4,8 +4,6 @@
 
 For a work project I had to pick up Ansible.  I'm definitley a learn by doing (or breaing if you ask my wife), so this was just me learning the basic ideas behind the tool. I quickly decided to use this for easy user management of my Pi's and VM's.  This is a basic ansible setup I use with my pi4 to quickly add my user and some apps that I like to have.  It is not a comprehensive setup.
 
-Note: I generally avoid installing python programs globally so in this case I used Pipenv to 
-
 ## WARNING!
 
 The users playbook creates an `admins` group and then adds a rule so users in the group can use sudo without a password.  I'm fine with this setup as the pi isn't exposed to the internet.
