@@ -30,8 +30,8 @@ This is just a simple playbook that imports my 2 main playbooks.  it easlily all
 
 ### App.yml
 
-This playbook updates the system and installs a few apps I like to have as a baseline. I run this app first so the docker group is available when I add my user later
+This playbook updates the system and installs a few apps I like to have as a baseline. I run this app first so the docker group is available when I add my user later.  It is currently only setup for my pi as most of my VM's are CentOS7 at the moment.  I will be updating this in the future.
 
 ### Users.yml
 
-This playbook creates an admin group and sudo rules, then it adds my user, adds my user to the sudo, docker, and admins group and ssh keys.
+This playbook creates an admin group and sudo rules, and my primary user account and ssh public keys.
