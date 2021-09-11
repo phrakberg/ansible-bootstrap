@@ -1,0 +1,28 @@
+- hosts: [pis]
+  gather_facts: true
+  become: yes
+  tasks:
+    - name: Check for Updates
+      apt:
+        update_cache: yes
+        upgrade: dist
+      register: update_facts
+
+    - debug:
+        var: update_facts
+
+    - name: Install Basic Apps
+      apt:
+        pkg:
+         - vim
+         - git
+         - docker
+         - zsh
+         - bat
+         - curl
+         - unattended-upgrades
+
+    - name: Clean up
+      apt:
+        autoclean: yes
+        autoremove: yes

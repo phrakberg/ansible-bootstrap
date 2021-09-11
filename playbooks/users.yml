@@ -1,0 +1,46 @@
+
+- hosts: [pis]
+  gather_facts: true
+  become: yes
+  become_user:
+  tasks:
+    - name: Ping device
+      ping:
+
+    - name: Create Admin Group
+      group:
+        name: admins
+        state: present
+      register: group_facts
+
+    - name: Sudo Rules for Admins
+      copy:
+        dest: /etc/sudoers.d/admins_nopasswd
+        content: '%admins ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+        mode: 0440
+      when: 
+        - group_facts.changed == true
+        - group_facts.state == 'present'
+
+    - name: Add phrakberg
+      user:
+        name: phrak
+        shell: /usr/bin/zsh
+        groups:
+          - sudo
+          - docker
+          - admins
+        append: yes
+        state: present
+      register: user_facts
+    
+    - debug:
+        var: user_facts
+
+    - name: add phrakberg keys
+      authorized_key:
+        user: phrak
+        state: present
+        # this will grab all public keys exposed by github's api
+        key: https://github.com/phrakberg.keys
