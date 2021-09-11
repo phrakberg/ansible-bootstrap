@@ -2,7 +2,7 @@
 
 ## Summary
 
-For a work project I had to pick up Ansible.  I'm definitley a learn by doing (or breaing if you ask my wife), so this was just me learning the basic ideas behind the tool. I quickly decided to use this for easy user management of my Pi's and VM's.  This is a basic ansible setup I use with my pi4 to quickly add my user and some apps that I like to have.  It is not a comprehensive setup.
+For a work project I had to pick up Ansible.  I'm definitley a learn by doing (or breaking if you ask my wife), so this was just me learning the basic ideas behind the tool. I quickly decided to use this for easy user management of my Pis and VMs.  This is a basic ansible setup I use with my pi4 to quickly add my user and some apps that I like to have.  It is not a comprehensive setup.
 
 This does currently require you to already have a user with sudo and your SSH key to work properly
 
@@ -26,12 +26,12 @@ This is a basic configuration file where you can set variables for both default 
 
 ### Main.yml
 
-This is just a simple playbook that imports my 2 main playbooks.  it easlily allows me to run them both with one command.
+This is just a simple playbook that imports my 2 main playbooks.  it easily allows me to run them both with one command.
 
 ### App.yml
 
-This playbook updates the system and installs a few apps I like to have as a baseline. I run this app first so the docker group is available when I add my user later.  It is currently only setup for my pi as most of my VM's are CentOS7 at the moment.  I will be updating this in the future.
+This playbook updates the system and installs a few apps I like to have as a baseline. I run this first so the docker group is available when I add my user later.  It is currently only setup for my pi as most of my VMs are CentOS7 at the moment.  I will be updating this in the future to work with both apt and yum based systems.
 
 ### Users.yml
 
-This playbook creates an admin group and sudo rules, and my primary user account and ssh public keys.
+This playbook creates an admin group, sudo rules, my primary user, and ssh public keys.
